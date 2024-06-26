@@ -1,29 +1,29 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import CountryListView from '@/views/CountryListView.vue'
-import CountryDetailView from '@/views/CountryDetailView.vue'
-import LoginView from '@/views/LoginView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import CountryListView from "@/views/CountryListView.vue";
+import CountryDetailView from "@/views/CountryDetailView.vue";
+// import LoginView from "@/views/LoginView.vue";
 
 const routes = [
+  // {
+  //   path: "/",
+  //   name: "LoginView",
+  //   component: LoginView,
+  // },
   {
-    path: '/',
-    name: 'LoginView',
-    component: LoginView
+    path: "/", //country-list
+    name: "CountryListView",
+    component: CountryListView,
   },
   {
-    path: '/country-list',
-    name: 'CountryListView',
-    component: CountryListView
+    path: "/country/:id",
+    name: "CountryDetailView",
+    component: CountryDetailView,
   },
-  {
-    path: '/country-detail/:id',
-    name: 'CountryDetailView',
-    component: CountryDetailView
-  },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
