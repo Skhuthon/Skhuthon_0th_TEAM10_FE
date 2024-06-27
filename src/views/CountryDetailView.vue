@@ -43,7 +43,8 @@ export default {
   },
   methods: {
     goList() {
-      this.$router.push("/");
+      const countryId = this.$route.params.countryId;
+      this.$router.push("/cities/" + countryId);
     },
   },
 };
