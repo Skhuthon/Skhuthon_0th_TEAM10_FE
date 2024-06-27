@@ -1,9 +1,8 @@
 import axios from 'axios';
-const baseURL = process.env.SERVER_BASE_URL;
 const accessToken = localStorage.getItem('access_token') || '';
 
 const instance = axios.create({
-    baseURL: baseURL,
+    baseURL: "https://gcptest123.shop",
     headers: {
         'Authorization': `Bearer ${accessToken}`
     }

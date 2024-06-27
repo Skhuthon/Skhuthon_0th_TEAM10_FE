@@ -1,10 +1,8 @@
-import axios from 'axios';
-
-axios.defaults.baseURL = "https://gcptest123.shop";
+import instance from './axios';
 
 export async function getAccessToken(code) {
     try {
-        const response = await axios.get("/api/oauth2/callback/google?code=" + code);
+        const response = await instance.get("/api/oauth2/callback/google?code=" + code);
         console.log(response.data);
         return response.data.accessToken;
     } catch(error) {
