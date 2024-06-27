@@ -7,22 +7,22 @@ import CityDetailView from "@/views/CityDetailView.vue";
 
 const routes = [
   {
-    path: '/login',
-    name: 'LoginView',
-    component: LoginView
+    path: "/login",
+    name: "LoginView",
+    component: LoginView,
   },
   {
-    path: '/',
-    name: 'CountryListView',
-    component: CountryListView
+    path: "/",
+    name: "CountryListView",
+    component: CountryListView,
   },
   {
-    path: '/api/oauth2/callback/google',
-    name: 'AuthCallback',
-    component: () => import('@/views/AuthCallback.vue')
+    path: "/api/oauth2/callback/google",
+    name: "AuthCallback",
+    component: () => import("@/views/AuthCallback.vue"),
   },
   {
-    path: "/country/:id",
+    path: "/country/:countryId",
     name: "CountryDetailView",
     component: CountryDetailView,
   },
