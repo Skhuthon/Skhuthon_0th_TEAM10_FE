@@ -9,14 +9,14 @@
     <section>
       <h3>출입국 정보</h3>
       <div class="departure">
-        <p>학번: {{ country.studentNo }}</p>
-        <p>번호: {{ country.phone }}</p>
-        <p>성별: {{ country.sex }}</p>
+        <p>국가: {{ country.name }}</p>
+        <p>특징: {{ country.character }}</p>
+        <p>대중교통: {{ country.transportation }}</p>
       </div>
       <h3>관광 정보</h3>
       <div class="visit">
-        <p>이메일: {{ country.email }}</p>
-        <p>부서 번호: {{ country.departmentId }}</p>
+        <p>번호: {{ country.number }}</p>
+        <p>사고: {{ country.accident }}</p>
       </div>
 
       <footer>
@@ -38,8 +38,8 @@ export default {
     };
   },
   async mounted() {
-    const id = this.$route.params.id;
-    this.country = await loadCountry(id);
+    const countryId = this.$route.params.countryId;
+    this.country = await loadCountry(countryId);
   },
   methods: {
     goList() {

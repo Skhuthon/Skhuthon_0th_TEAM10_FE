@@ -4,10 +4,11 @@
     <div class="country-container">
       <div
         v-for="country in countries"
-        v-bind:key="country.id"
-        v-on:click="goEdit(country.id)"
+        v-bind:key="country.countryId"
+        v-on:click="goEdit(country.countryId)"
         class="country-item"
       >
+        <img src="{country.countryImage}" />
         {{ country.name }}
       </div>
     </div>
@@ -27,8 +28,8 @@ export default {
     this.countries = await loadCountries();
   },
   methods: {
-    goEdit(id) {
-      this.$router.push("/country/" + id);
+    goEdit(countryId) {
+      this.$router.push("/country/" + countryId);
     },
   },
 };
