@@ -4,11 +4,11 @@
     <div class="country-container">
       <div
         v-for="country in countries"
-        v-bind:key="country.countryId"
-        v-on:click="goEdit(country.countryId)"
+        :key="country.countryId"
+        @click="goEdit(country.countryId)"
         class="country-item"
       >
-        <img src="{country.countryImage}" />
+        <img :src="country.countryImage" alt="Country Image" />
         {{ country.name }}
       </div>
     </div>
@@ -36,6 +36,11 @@ export default {
 </script>
 
 <style scoped>
+img {
+  width: 20px;
+  border-radius: 5px;
+}
+
 h1 {
   text-align: center;
 }
