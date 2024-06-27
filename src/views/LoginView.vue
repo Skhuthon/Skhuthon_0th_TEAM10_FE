@@ -16,7 +16,7 @@ export default {
   name: "LoginView",
   methods: {
     handleLogin() {
-        window.location = 'https://accounts.google.com/o/oauth2/v2/auth?client_id=354998291702-snqf3mnfo390ua8fi245fuao0pk00ut4.apps.googleusercontent.com&redirect_uri=http://localhost:8080/oauth2/callback/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+        window.location = 'https://accounts.google.com/o/oauth2/v2/auth?client_id=354998291702-snqf3mnfo390ua8fi245fuao0pk00ut4.apps.googleusercontent.com&redirect_uri=http://localhost:8080/api/oauth2/callback/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
     }
   }
 };

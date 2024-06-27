@@ -9,10 +9,12 @@ import { getAccessToken } from '../apis/authService';
 
 export default {
     name: "AuthCallback",
-    created() {
+    async created() {
         const code = this.$route.query.code;
+        console.log(code);
         if (code) {
-            const accessToken = getAccessToken(code).accessToken;
+            const accessToken = await getAccessToken(code);
+            console.log(accessToken);
             localStorage.setItem('access_token', accessToken);
             this.$router.push('/');
         }

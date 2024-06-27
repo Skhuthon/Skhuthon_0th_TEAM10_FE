@@ -27,8 +27,9 @@
     </section>
   </div>
 </template>
+
 <script>
-import { loadCountry } from "../countryService";
+import { loadCountry } from "../apis/countryService";
 export default {
   name: "CountryDetailView",
   data() {
@@ -47,6 +48,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .topButton {
   position: fixed;

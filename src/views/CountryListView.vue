@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { loadCountries } from "../countryService";
+import { loadCountries } from "../apis/countryService";
 export default {
   name: "CountryListView",
   data() {

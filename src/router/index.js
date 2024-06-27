@@ -15,7 +15,7 @@ const routes = [
     component: CountryListView
   },
   {
-    path: '/oauth2/callback/google',
+    path: '/api/oauth2/callback/google',
     name: 'AuthCallback',
     component: () => import('@/views/AuthCallback.vue')
   },
