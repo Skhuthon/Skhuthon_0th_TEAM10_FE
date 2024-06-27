@@ -1,24 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import CountryListView from '@/views/CountryListView.vue'
-import CountryDetailView from '@/views/CountryDetailView.vue'
+// import CountryDetailView from '@/views/CountryDetailView.vue'
 import LoginView from '@/views/LoginView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'LoginView',
     component: LoginView
   },
   {
-    path: '/country-list',
+    path: '/',
     name: 'CountryListView',
     component: CountryListView
   },
+  // {
+  //   path: '/country-detail/:id',
+  //   name: 'CountryDetailView',
+  //   component: CountryDetailView
+  // },
   {
-    path: '/country-detail/:id',
-    name: 'CountryDetailView',
-    component: CountryDetailView
-  },
+    path: '/oauth2/callback/google',
+    name: 'AuthCallback',
+    component: () => import('@/views/AuthCallback.vue')
+  }
 ]
 
 const router = createRouter({

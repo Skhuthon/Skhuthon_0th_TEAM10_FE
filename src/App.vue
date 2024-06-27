@@ -6,13 +6,11 @@
 
 <style>
 div#App {
-  padding: 5px;
-  margin: 0px 5px;
-  width: 290px;
-  border: 1px solid #ccc;
-  box-shadow: 3px 3px 3px #aaa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0px auto; /* 상하 마진 추가 */
+  width: 350px; /* 너비는 유지 */
+  border: 1px solid #ddd; /* 테두리 색상을 더 연한 그레이로 변경 */
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1); /* 박스 쉐도우를 부드럽게 적용 */
+  background-color: #fff; /* 배경색을 흰색으로 설정 */
+  box-sizing: border-box;
 }
 </style>
