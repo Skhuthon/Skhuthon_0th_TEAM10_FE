@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import CountryListView from "@/views/CountryListView.vue";
 import CountryDetailView from "@/views/CountryDetailView.vue";
 import LoginView from "@/views/LoginView.vue";
+import CityListView from "@/views/CityListView.vue";
+import CityDetailView from "@/views/CityDetailView.vue";
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     name: "CountryDetailView",
     component: CountryDetailView,
   },
+  {
+    path: "/cities/:id",
+    name: "CityListView",
+    component: CityListView
+  },
+  {
+    path: "/city/:id",
+    name: "CityDetailView",
+    component: CityDetailView
+  }
 ];
 
 const router = createRouter({
