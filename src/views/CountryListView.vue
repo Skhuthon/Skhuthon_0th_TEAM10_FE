@@ -1,7 +1,7 @@
 <template>
   <div id="countryListView">
     <div ref="wordCloudContainer" class="word-cloud-container"></div>
-    <h1>국가 목록</h1>
+    <h4>여행지 정보를 알아보아요</h4>
     <div class="country-container">
       <div
         v-for="country in countries"
@@ -10,7 +10,7 @@
         class="country-item"
       >
         <img :src="country.countryImage" alt="Country Image" />
-        {{ country.name }}
+        <div>{{ country.name }}</div>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@ export default {
       WordCloud(this.$refs.wordCloudContainer, {
         list: wordList,
         weightFactor: 10, // value에 곱해지는 인수, 값이 클수록 글씨가 커짐.
-        minSize: 3, // 최소 글씨 크기
+        minSize: 2, // 최소 글씨 크기
       });
     },
     goEdit(countryId) {
@@ -57,24 +57,27 @@ img {
   border-radius: 5px;
 }
 
-h1 {
+h4 {
   text-align: center;
+  background-color: rgb(255, 200, 98);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 #countryListView {
   margin: auto;
   padding: 20px;
-  width: fit-content;
+  width: 80%;
+  right: 8px;
 }
 
 .word-cloud-container {
   width: 100%;
-  height: 100px;
+  height: 200px;
   border: 1px solid #ddd;
   border-radius: 20px;
-  position: relative;
-  width: 150%;
-  right: 33px;
+  width: 100%;
+  margin: auto;
 }
 
 .country-container {
@@ -86,7 +89,7 @@ h1 {
 
 .country-item {
   flex: 0 1 calc(25% - 15px);
-  border: 1px solid black;
+  border: 1px solid rgb(179, 175, 175);
   border-radius: 10px;
   box-sizing: border-box;
   text-align: center;
