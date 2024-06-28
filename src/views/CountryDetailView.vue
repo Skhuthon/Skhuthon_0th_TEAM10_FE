@@ -1,22 +1,18 @@
 <template>
   <div id="StudentEdit">
-    <header>
-      <div>
-        <button class="topButton" type="button" v-on:click="goList">X</button>
-      </div>
-    </header>
+    <header></header>
     <h1>{{ country.name }}</h1>
     <section>
       <h3>출입국 정보</h3>
       <div class="departure">
-        <p>국가: {{ country.name }}</p>
-        <p>특징: {{ country.character }}</p>
-        <p>대중교통: {{ country.transportation }}</p>
+        <p><strong>국가:</strong> {{ country.name }}</p>
+        <p><strong>특징:</strong> {{ country.character }}</p>
+        <p><strong>대중교통:</strong> {{ country.transportation }}</p>
       </div>
       <h3>관광 정보</h3>
       <div class="visit">
-        <p>번호: {{ country.number }}</p>
-        <p>사고: {{ country.accident }}</p>
+        <p><strong>번호:</strong> {{ country.number }}</p>
+        <p><strong>사고:</strong> {{ country.accident }}</p>
       </div>
 
       <footer>
@@ -51,18 +47,13 @@ export default {
 </script>
 
 <style>
-.topButton {
-  position: fixed;
-  top: 0px;
-  right: -10px;
-}
-
 h1 {
   text-align: center;
 }
 h3 {
-  margin-left: 8px;
+  margin-left: 30px;
   margin-top: 60px;
+  color: red;
 }
 
 select {
@@ -72,6 +63,7 @@ select {
 
 section {
   width: 100%;
+  margin: -30px auto;
 }
 
 .departure,
@@ -79,7 +71,7 @@ section {
   background-color: rgb(231, 231, 231);
   border-radius: 20px;
   padding: 10px;
-  margin: auto;
+  margin: 1px 20px;
 }
 button {
   padding: 5px 20px;
@@ -87,6 +79,7 @@ button {
 }
 footer {
   text-align: center;
+  margin: auto 20px;
 }
 
 .bottomButton {
