@@ -3,7 +3,6 @@ import instance from './axios';
 export async function getAccessToken(code) {
     try {
         const response = await instance.get("/api/oauth2/callback/google?code=" + code);
-        console.log(response.data);
         return response.data.accessToken;
     } catch(error) {
         alert('로그인 에러: ' + (error instanceof Error ? error.message : error));
@@ -30,5 +29,14 @@ export function checkLogin() {
     } catch (e) {
         console.error('Invalid token', e);
         return false;
+    }
+}
+
+export async function getUserInfo() {
+    try {
+        const response = await instance.get("/user");
+        return response.data
+    } catch (error) {
+        alert('로그인 에러: ' + (error instanceof Error ? error.message : error));
     }
 }

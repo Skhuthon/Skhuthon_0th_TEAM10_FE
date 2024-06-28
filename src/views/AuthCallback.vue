@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { getAccessToken } from '../apis/authService'; 
+import { getAccessToken } from '../apis/authService';
 
 export default {
     name: "AuthCallback",
