@@ -1,18 +1,16 @@
 <template>
-  <div id="StudentEdit">
-    <header></header>
-    <h1>{{ country.name }}</h1>
+  <div id="CountryDetail">
+    <h1>🌍 {{ country.name }}</h1>
     <section>
-      <h3>출입국 정보</h3>
-      <div class="departure">
-        <p><strong>국가:</strong> {{ country.name }}</p>
-        <p><strong>특징:</strong> {{ country.character }}</p>
-        <p><strong>대중교통:</strong> {{ country.transportation }}</p>
+      <h3>🚪 출입국 정보</h3>
+      <div class="info-card">
+        <p><strong>⭐ 특징:</strong> {{ country.character }}</p>
+        <p><strong>🚌 대중교통:</strong> {{ country.transportation }}</p>
       </div>
-      <h3>관광 정보</h3>
-      <div class="visit">
-        <p><strong>번호:</strong> {{ country.number }}</p>
-        <p><strong>사고:</strong> {{ country.accident }}</p>
+      <h3>🗺️ 관광 정보</h3>
+      <div class="info-card">
+        <p><strong>🔢 번호:</strong> {{ country.number }}</p>
+        <p><strong>⚠️ 사고:</strong> {{ country.accident }}</p>
       </div>
 
       <footer>
@@ -46,49 +44,74 @@ export default {
 };
 </script>
 
-<style>
-h1 {
-  text-align: center;
-}
-h3 {
-  margin-left: 30px;
-  margin-top: 60px;
-  color: red;
+<style scoped>
+#CountryDetail {
+  background-color: #f9f9f9;
+  font-family: 'Pretendard', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-select {
-  padding: 6px;
-  width: 150px;
+h1 {
+  font-size: 2.5rem;
+  color: #ff6f61;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #ff6f61;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 section {
   width: 100%;
-  margin: -30px auto;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 
-.departure,
-.visit {
-  background-color: rgb(231, 231, 231);
-  border-radius: 20px;
-  padding: 10px;
-  margin: 1px 20px;
+.info-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-button {
-  padding: 5px 20px;
-  margin-right: 10px;
+
+.info-card p {
+  margin: 10px 0;
+  color: #555;
+  font-size: 1rem;
 }
+
 footer {
   text-align: center;
-  margin: auto 20px;
+  margin-top: 40px;
 }
 
 .bottomButton {
-  margin: 50px auto;
   width: 100%;
-  height: 40px;
-  border-radius: 10px;
+  max-width: 300px;
+  height: 50px;
+  border-radius: 15px;
   border: none;
-  background-color: orange;
+  background-color: #333;
   color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bottomButton:hover {
+  background-color: #555;
 }
 </style>
