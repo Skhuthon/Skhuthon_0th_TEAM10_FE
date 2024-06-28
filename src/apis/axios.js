@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const baseURL = process.env.VUE_APP_BASE_URL;
+
 const instance = axios.create({
-    baseURL: "https://gcptest123.shop"
+    baseURL: baseURL
 });
 
 instance.interceptors.request.use(

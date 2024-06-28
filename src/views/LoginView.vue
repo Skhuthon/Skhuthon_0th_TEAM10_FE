@@ -1,22 +1,23 @@
 <template>
-    <div id="login-view" class="container">
-      <div class="logo-section">
-        <img src="../assets/logo.png" alt="Travel Compass" class="logo">
-      </div>
-      <h1>Travel Compass</h1>
-      <a @click.prevent="handleLogin" href="#">
-        <img src="../assets/web_neutral_rd_SI.svg" alt="google login">
-      </a>
+  <div id="login-view" class="container">
+    <div class="logo-section">
+      <img src="../assets/logo.png" alt="Travel Compass" class="logo">
     </div>
-  </template>
-  
+    <h1>Travel Compass</h1>
+    <a @click.prevent="handleLogin" href="#">
+      <img src="../assets/google_signin.svg" alt="google login">
+    </a>
+  </div>
+</template>
+
 
 <script>
 export default {
   name: "LoginView",
   methods: {
     handleLogin() {
-        window.location = 'https://accounts.google.com/o/oauth2/v2/auth?client_id=354998291702-snqf3mnfo390ua8fi245fuao0pk00ut4.apps.googleusercontent.com&redirect_uri=http://localhost:8080/api/oauth2/callback/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+      const googleAuthUrl = process.env.VUE_APP_GOOGLE_AUTH_URL;
+      window.location = googleAuthUrl;
     }
   }
 };
@@ -40,7 +41,7 @@ export default {
 
 .logo {
   width: 150px; /* 로고의 크기를 조절합니다 */
-  height: auto;
+
 }
 
 h1 {
