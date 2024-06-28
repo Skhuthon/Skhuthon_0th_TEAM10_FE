@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
+    "@mdi/font": "^7.4.47",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "core-js": "^3.8.3",
     "mitt": "^3.0.1",
     "vue": "^3.4.30",
     "vue-router": "^4.0.3",
+    "vuetify": "^3.6.0-beta.0.0",
     "vuex": "^4.0.2",
     "wordcloud": "^1.2.2"
   },

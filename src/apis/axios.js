@@ -1,12 +1,21 @@
 import axios from 'axios';
-const accessToken = localStorage.getItem('access_token') || '';
 
 const instance = axios.create({
-    baseURL: "https://gcptest123.shop",
-    headers: {
-        'Authorization': `Bearer ${accessToken}`
-    }
+    baseURL: "https://gcptest123.shop"
 });
+
+instance.interceptors.request.use(
+    config => {
+        const token = localStorage.getItem('access_token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    error => {
+        return Promise.reject(error);
+    }
+);
 
 instance.interceptors.response.use(
     response => {

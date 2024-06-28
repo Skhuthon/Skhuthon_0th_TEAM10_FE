@@ -17,22 +17,10 @@
 
 
 <script>
-import { checkLogin, getUserInfo } from "../apis/authService";
+import { checkLogin } from "../apis/authService";
 
 export default {
   name: "HeaderComponent",
-  data() {
-    return {
-      loggedIn: false,
-      loginData: {},
-    };
-  },
-  async mounted() {
-    if (checkLogin()) {
-      this.loggedIn = true;
-      this.loginData = await getUserInfo();
-    }
-  },
   methods: {
     goHome() {
       this.$router.push("/");

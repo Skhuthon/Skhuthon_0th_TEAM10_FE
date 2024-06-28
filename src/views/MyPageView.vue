@@ -6,6 +6,11 @@
 
 <script>
 export default {
-  name: "MyPageView"
+  name: "MyPageView",
+  methods: {
+    async getUser() {
+
+    }
+  }
 }
 </script>
