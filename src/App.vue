@@ -1,11 +1,20 @@
 <template>
   <div id="App">
-    <!-- <div id="header">
-      <h1>Header</h1>
-    </div> -->
+    <HeaderComponent />
     <router-view />
   </div>
 </template>
+
+<script>
+import HeaderComponent from "./components/HeaderComponent.vue";
+
+export default {
+  name: "App",
+  components: {
+    HeaderComponent
+  }
+}
+</script>
 
 <style>
 body {
@@ -13,8 +22,7 @@ body {
 }
 
 #App #header {
-  border: 1px solid red;
-  height: 50px;
+  height: 35px;
 }
 
 div#App {

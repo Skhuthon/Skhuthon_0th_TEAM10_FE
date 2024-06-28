@@ -4,6 +4,7 @@ import CountryDetailView from "@/views/CountryDetailView.vue";
 import LoginView from "@/views/LoginView.vue";
 import CityListView from "@/views/CityListView.vue";
 import CityDetailView from "@/views/CityDetailView.vue";
+import ReviewAddView from "@/views/ReviewAddView.vue";
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     path: "/city/:id",
     name: "CityDetailView",
     component: CityDetailView
+  },
+  {
+    path: "/addReview/:id",
+    name: "ReviewAddView",
+    component: ReviewAddView
   }
 ];
 
