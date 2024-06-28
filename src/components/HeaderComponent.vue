@@ -5,16 +5,16 @@
       <span class="title">TC</span>
     </div>
     <div class="user-info">
-      <div v-if="loggedIn" class="profile">
-        <img :src="loginData.pictureUrl" alt="Profile Picture" class="profile-picture">
-        <span class="title2">{{ loginData.name }}</span>
-      </div>
-      <div v-if="!loggedIn">
-        <span class="title login-link" @click="goLogin">Login</span>
+      <div>
+        <span class="title login-link" @click="goMyPage">
+          <i class="fas fa-user-circle"></i>
+          <span id="mypage">마이페이지</span>
+        </span>
       </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import { checkLogin, getUserInfo } from "../apis/authService";
@@ -37,8 +37,13 @@ export default {
     goHome() {
       this.$router.push("/");
     },
-    goLogin() {
-      this.$router.push("/login");
+    goMyPage() {
+      if (checkLogin()) {
+        this.$router.push("/myPage");
+      } else {
+        alert("로그인이 필요한 서비스입니다.");
+        this.$router.push("/login");
+      }
     },
   },
 };
@@ -71,30 +76,31 @@ export default {
   color: #d6d3d3;
 }
 
-.title2 {
-  font-size: 15px;
-  font-weight: bold;
-  color: #d6d3d3;
-}
-
 .user-info {
   display: flex;
   align-items: center;
 }
 
-.profile {
-  display: flex;
-  align-items: center;
-}
-
-.profile-picture {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%; /* 둥글게 만듦 */
-  margin-right: 5px;
-}
-
 .login-link {
   cursor: pointer;
+  font-size: 15px;
+  color: #d6d3d3;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.login-link i {
+  margin-right: 10px;
+  font-size: 36px;
+}
+
+.login-link:hover {
+  color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+#mypage {
+  margin-left: 5px;
 }
 </style>
