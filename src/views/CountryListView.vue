@@ -1,6 +1,7 @@
 <template>
   <div id="countryListView">
-    <h1>학생 목록</h1>
+    <div ref="wordCloudContainer" class="word-cloud-container"></div>
+    <h1>국가 목록</h1>
     <div class="country-container">
       <div
         v-for="country in countries"
@@ -16,18 +17,33 @@
 </template>
 
 <script>
-import { loadCountries } from "../apis/countryService";
+import { loadCloud, loadCountries } from "../apis/countryService";
+import WordCloud from "wordcloud";
+
 export default {
   name: "CountryListView",
   data() {
     return {
       countries: [],
+      words: [],
     };
   },
   async mounted() {
     this.countries = await loadCountries();
+    const cloudData = await loadCloud();
+    this.words = cloudData.reviewsList;
+    this.renderWordCloud();
   },
   methods: {
+    // 워드 클라우드 값을 받아온 다음 배열에 있는 값을 하나씩 가져옴.
+    renderWordCloud() {
+      const wordList = this.words.map((word) => [word.text, word.value]);
+      WordCloud(this.$refs.wordCloudContainer, {
+        list: wordList,
+        weightFactor: 10, // value에 곱해지는 인수, 값이 클수록 글씨가 커짐.
+        minSize: 3, // 최소 글씨 크기
+      });
+    },
     goEdit(countryId) {
       this.$router.push("/country/" + countryId);
     },
@@ -44,10 +60,21 @@ img {
 h1 {
   text-align: center;
 }
+
 #countryListView {
   margin: auto;
   padding: 20px;
   width: fit-content;
+}
+
+.word-cloud-container {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  position: relative;
+  width: 150%;
+  right: 33px;
 }
 
 .country-container {
