@@ -27,3 +27,13 @@ export async function loadCloud() {
     alert("조회 에러: " + (error instanceof Error ? error.message : error));
   }
 }
+
+// AI로부터 값을 받아오기 위한 함수
+export async function loadGpt() {
+  try {
+    const response = await instance.post("/ai");
+    return response.data;
+  } catch (error) {
+    alert("조회 에러: " + (error instanceof Error ? error.message : error));
+  }
+}
