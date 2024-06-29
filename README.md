@@ -1,4 +1,4 @@
-# skhuthon10 - TravelCompass
+# skhuthon10
 
 
 ## Project setup
