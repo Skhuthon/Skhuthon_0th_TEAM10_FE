@@ -6,7 +6,7 @@
       <button class="gpt-button" @click="refreshGpt">
         핫한 여행지는 어딜까? 클릭!
       </button>
-      <div class="gpt-description">{{ gpt.answer }}</div>
+      <div class="gpt-description" v-if="gpt.answer">{{ gpt.answer }}</div>
     </div>
     <div class="country-container">
       <div
@@ -34,19 +34,21 @@ export default {
     return {
       countries: [],
       words: [],
-      gpt: {}, // 객체로 초기화
+      gpt: {
+        answer: "", // 초기값을 빈 문자열로 설정
+      },
     };
   },
   async mounted() {
     this.countries = await loadCountries();
     const cloudData = await loadCloud();
-    this.gpt = await loadGpt();
     this.words = cloudData.reviewsList;
     this.renderWordCloud();
   },
   methods: {
     async refreshGpt() {
-      this.gpt = await loadGpt();
+      const newGpt = await loadGpt();
+      this.gpt.answer = newGpt.answer; // gpt.answer 값을 새로 불러와서 업데이트
     },
     renderWordCloud() {
       const wordList = this.words.map((word) => [word.text, word.value]);
