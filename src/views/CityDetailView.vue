@@ -1,28 +1,49 @@
 <template>
   <div id="CityDetail">
     <div class="city-header">
-      <img :src="basic.cityImage" alt="city.name" class="city-image">
+      <img :src="basic.cityImage" alt="city.name" class="city-image" />
       <div class="city-header-text">
         <h1 class="city-name">{{ basic.name }}</h1>
         <p class="city-description">{{ basic.info }}</p>
       </div>
     </div>
-    <blockquote class="city-recommendation">{{ basic.recommendation }}</blockquote>
+    <blockquote class="city-recommendation">
+      {{ basic.recommendation }}
+    </blockquote>
 
     <div class="reviews-section">
       <div class="reviews-header">
         <h2>📌 추천 명소</h2>
-        <button class="add-review-button" @click="addReview(this.$route.params.id)">등록하기</button>
+        <button
+          class="add-review-button"
+          @click="addReview(this.$route.params.id)"
+        >
+          등록하기
+        </button>
       </div>
-      <div v-for="review in reviews" :key="review.reviewId" class="review-card" @click="openModal(review)">
+      <div
+        v-for="review in reviews"
+        :key="review.reviewId"
+        class="review-card"
+        @click="openModal(review)"
+      >
         <h3 class="review-title">{{ truncateText(review.placeName1, 10) }}</h3>
-        <img :src="review.placeImage1" alt="review.placeName1" class="review-image">
+        <img
+          :src="review.placeImage1"
+          alt="review.placeName1"
+          class="review-image"
+        />
       </div>
     </div>
 
     <div class="blogs-section">
       <h2>📝 네이버 블로그</h2>
-      <div v-for="blog in blogs" :key="blog.title" class="blog-card" @click="goBlog(blog.link)">
+      <div
+        v-for="blog in blogs"
+        :key="blog.title"
+        class="blog-card"
+        @click="goBlog(blog.link)"
+      >
         <div class="blog-content">
           <p class="blog-title" v-html="blog.title"></p>
           <p class="blog-description" v-html="blog.description"></p>
@@ -34,9 +55,24 @@
     <div v-if="showModal" class="modal" @click.self="closeModal">
       <div class="modal-content">
         <span class="close" @click="closeModal">&times;</span>
-        <h2>{{ selectedReview.placeName1 }}</h2>
-        <p>{{ selectedReview.placeInfo1 }}</p>
-        <img :src="selectedReview.placeImage1" alt="selectedReview.placeName1" class="modal-image">
+        <h2 class="title">{{ selectedReview.placeName1 }}</h2>
+        <img
+          :src="selectedReview.placeImage1"
+          alt="selectedReview.placeName1"
+          class="modal-image"
+        />
+
+        <div class="description-box">
+          <div class="profile">
+            <img
+              class="profile-image"
+              :src="selectedReview.pictureUrl"
+              alt="selectedReview.placeName1"
+            />
+            <p>{{ selectedReview.userName }}</p>
+          </div>
+          <p class="description">{{ selectedReview.placeInfo1 }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -46,6 +82,7 @@
 import { loadCity, loadNaverBlog } from "../apis/cityService";
 import { loadReviews } from "../apis/reviewService";
 import { checkLogin } from "../apis/authService";
+import { getUserInfo } from "../apis/authService";
 
 export default {
   name: "CityDetailView",
@@ -55,7 +92,9 @@ export default {
       blogs: [],
       reviews: [],
       showModal: false,
-      selectedReview: {}
+      selectedReview: {},
+      userName: [],
+      reviewsInfo: [],
     };
   },
   async mounted() {
@@ -64,6 +103,7 @@ export default {
     const query = this.basic.name;
     this.blogs = await loadNaverBlog(query);
     this.reviews = await loadReviews(id);
+    this.userName = await getUserInfo();
   },
   methods: {
     goBlog(link) {
@@ -79,7 +119,7 @@ export default {
     },
     truncateText(text, length) {
       if (text.length > length) {
-        return text.substring(0, length) + '...';
+        return text.substring(0, length) + "...";
       }
       return text;
     },
@@ -89,15 +129,15 @@ export default {
     },
     closeModal() {
       this.showModal = false;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
 #CityDetail {
   padding: 20px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: "Pretendard", sans-serif;
 }
 
 .city-header {
@@ -140,7 +180,8 @@ export default {
   font-style: italic;
 }
 
-.blogs-section, .reviews-section {
+.blogs-section,
+.reviews-section {
   margin-top: 20px;
 }
 
@@ -151,7 +192,32 @@ export default {
   margin-bottom: 10px;
 }
 
-.blogs-section h2, .reviews-section h2 {
+.title {
+  border-top: red 5px solid;
+  border-bottom: red 5px solid;
+  border-radius: 5px;
+  width: fit-content;
+  margin: auto;
+  padding: 10px 0px;
+}
+
+.description-box {
+  border-radius: 10px;
+  width: 70%;
+  margin: 40px auto;
+}
+
+.description {
+  background-color: #fff1ab;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 100%;
+  height: 100%;
+  line-height: 70px;
+}
+
+.blogs-section h2,
+.reviews-section h2 {
   margin-bottom: 10px;
   color: #ff6f61;
   display: flex;
@@ -160,7 +226,8 @@ export default {
   font-weight: bold;
 }
 
-.blog-card, .review-card {
+.blog-card,
+.review-card {
   padding: 15px;
   border: 1px solid #eee;
   border-radius: 10px;
@@ -171,17 +238,20 @@ export default {
   overflow: hidden;
 }
 
-.blog-card:hover, .review-card:hover {
+.blog-card:hover,
+.review-card:hover {
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
 }
 
-.blog-content, .review-content {
+.blog-content,
+.review-content {
   display: flex;
   flex-direction: column;
   max-width: 100%;
 }
 
-.blog-title, .review-title {
+.blog-title,
+.review-title {
   font-size: 18px;
   font-weight: bold;
   margin: 0 0 5px;
@@ -193,9 +263,10 @@ export default {
 
 .review-image {
   width: 100%;
-  height: auto;
+  height: 60px;
   border-radius: 10px;
   margin-top: 10px;
+  object-fit: cover; /* 이미지가 요소를 덮도록 설정 */
 }
 
 .blogger-name {
@@ -263,10 +334,27 @@ export default {
 }
 
 .modal-image {
-  width: 100%;
+  width: 70%;
   max-width: 400px;
   height: auto;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 30px;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center();
+  background-color: #fbe9c6;
+  margin-bottom: -16px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.profile-image {
+  margin: 15px 3px;
+  width: 10%;
+  height: 10%;
+  border-radius: 50%;
 }
 </style>
