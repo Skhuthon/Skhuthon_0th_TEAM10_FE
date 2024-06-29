@@ -1,5 +1,6 @@
 # skhuthon10 - TravelCompass
 
+
 ## Project setup
 ```
 npm install
