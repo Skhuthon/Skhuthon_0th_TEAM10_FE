@@ -352,7 +352,7 @@ export default {
 }
 
 .profile-image {
-  margin: 15px 3px;
+  margin: 5px 6px;
   width: 10%;
   height: 10%;
   border-radius: 50%;
