@@ -1,4 +1,5 @@
-# 스쿠톤 10팀: Travel Compass
+# skhuthon10 - TravelCompass
+
 
 ## Project setup
 ```
