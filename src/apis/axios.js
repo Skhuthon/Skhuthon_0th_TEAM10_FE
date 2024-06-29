@@ -6,10 +6,15 @@ const instance = axios.create({
     baseURL: baseURL
 });
 
+function isJWT(token) {
+    const parts = token.split('.');
+    return parts.length === 3;
+}
+
 instance.interceptors.request.use(
     config => {
         const token = localStorage.getItem('access_token');
-        if (token) {
+        if (token && isJWT(token)) {
             config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
@@ -33,6 +38,6 @@ instance.interceptors.response.use(
         }
         return Promise.reject(error);
     }
-)
+);
 
 export default instance;

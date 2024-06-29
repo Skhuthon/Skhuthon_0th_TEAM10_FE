@@ -11,7 +11,6 @@ export default {
     name: "AuthCallback",
     async created() {
         const code = this.$route.query.code;
-        console.log(code);
         if (code) {
             const accessToken = await getAccessToken(code);
             console.log(accessToken);
